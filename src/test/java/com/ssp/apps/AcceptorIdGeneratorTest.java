@@ -44,8 +44,13 @@ public class AcceptorIdGeneratorTest {
     }
 
     @Test
-    public void should_generate_nextExxptorId() {
+    public void should_generate_nextAcceptorId() {
         String nextId = acceptorIdGenerator.nextStringIdentifier(initialAcceptorId);
         assertThat(nextId, is(equalTo(nextAcceptorId)));
+    }
+
+    @Test(expected = Exception.class)
+    public void test() {
+        acceptorIdGenerator.nextStringIdentifier("ZZZZZZ");
     }
 }
