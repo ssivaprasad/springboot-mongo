@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class LoadFile {
+public class File {
     private String uploadId;
     private String filename;
     private String fileType;

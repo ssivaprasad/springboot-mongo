@@ -33,19 +33,19 @@ public class FileService {
     }
 
 
-    public LoadFile downloadFile(String id) throws IOException {
+    public File downloadFile(String id) throws IOException {
         GridFSFile gridFSFile = template.findOne(new Query(Criteria.where("_id").is(id)));
 
-        LoadFile loadFile = new LoadFile();
+        File file = new File();
         if (gridFSFile != null && gridFSFile.getMetadata() != null) {
-            loadFile.setUploadId(gridFSFile.getId().asObjectId().toString());
-            loadFile.setFilename(gridFSFile.getFilename());
-            loadFile.setFileType(gridFSFile.getMetadata().get("_contentType").toString());
-            loadFile.setFileSize(gridFSFile.getMetadata().get("fileSize").toString());
+            file.setUploadId(gridFSFile.getId().asObjectId().toString());
+            file.setFilename(gridFSFile.getFilename());
+            file.setFileType(gridFSFile.getMetadata().get("_contentType").toString());
+            file.setFileSize(gridFSFile.getMetadata().get("fileSize").toString());
            // loadFile.setFile(IOUtils.toByteArray(operations.getResource(gridFSFile).getInputStream()));
         }
 
-        return loadFile;
+        return file;
     }
 
 }
